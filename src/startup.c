@@ -186,7 +186,7 @@ void start_application(const char *command, bool no_startup_id) {
         unsetenv("LISTEN_PID");
         unsetenv("LISTEN_FDS");
         signal(SIGPIPE, SIG_DFL);
-        if (fork() == 0) {
+        //if (fork() == 0) {
             /* Setup the environment variable(s) */
             if (!no_startup_id)
                 sn_launcher_context_setup_child_process(context);
@@ -194,10 +194,10 @@ void start_application(const char *command, bool no_startup_id) {
 
             execl(_PATH_BSHELL, _PATH_BSHELL, "-c", command, NULL);
             /* not reached */
-        }
+        //}
         _exit(EXIT_SUCCESS);
     }
-    wait(0);
+    //wait(0);
 
     if (!no_startup_id) {
         /* Change the pointer of the root window to indicate progress */
