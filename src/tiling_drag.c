@@ -40,6 +40,12 @@ static bool is_tiling_drop_target(Con *con) {
  *
  */
 bool has_drop_targets(void) {
+    /*
+     * PATCH: there always are drop targets. That's a temporary measure, until
+     * #5797 is resolved.
+     */
+    return 1;
+
     int drop_targets = 0;
     Con *con;
     TAILQ_FOREACH (con, &all_cons, all_cons) {
